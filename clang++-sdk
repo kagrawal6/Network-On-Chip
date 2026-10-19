@@ -1,0 +1,4 @@
+#!/bin/sh
+# Workaround: a stale /Library/Developer/CommandLineTools/usr/include/c++/v1
+# shadows the SDK's libc++ headers. Point clang++ at the SDK copy instead.
+exec /usr/bin/clang++ -nostdinc++ -isystem "$(xcrun --show-sdk-path)/usr/include/c++/v1" "$@"
